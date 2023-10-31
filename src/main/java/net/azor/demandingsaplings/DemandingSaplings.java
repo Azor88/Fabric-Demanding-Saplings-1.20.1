@@ -1,6 +1,6 @@
 package net.azor.demandingsaplings;
 
-import net.azor.demandingsaplings.block.Modblocks;
+import net.azor.demandingsaplings.block.ModBlocks;
 import net.azor.demandingsaplings.item.ModItemGroups;
 import net.azor.demandingsaplings.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -17,6 +17,6 @@ public class DemandingSaplings implements ModInitializer {
 		ModItemGroups.registerItemGroup();
 
 		ModItems.registerModItems();
-		Modblocks.registerModBlocks();
+		ModBlocks.registerModBlocks();
 	}
 }

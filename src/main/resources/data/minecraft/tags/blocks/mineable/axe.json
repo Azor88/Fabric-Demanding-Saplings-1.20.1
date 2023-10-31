@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "demandingsaplings:frozen_bush"
+    "demandingsaplings:frozen_bush",
+    "demandingsaplings:dead_sapling"
   ]
 }

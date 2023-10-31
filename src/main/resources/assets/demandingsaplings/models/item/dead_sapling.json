@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "demandingsaplings:item/dead_sapling"
+    "layer0": "demandingsaplings:block/dead_sapling"
   }
 }

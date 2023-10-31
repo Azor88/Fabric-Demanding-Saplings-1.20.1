@@ -14,10 +14,15 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
-public class Modblocks {
+public class ModBlocks {
 
     public static final Block FROZEN_BUSH = registerBlock("frozen_bush", new DeadBushBlock(FabricBlockSettings.copyOf(Blocks.DEAD_BUSH).sounds(BlockSoundGroup.CHERRY_SAPLING).nonOpaque().noCollision()));
-    public static final Block POTTED_FROZEN_BUSH = registerBlock("potted_frozen_bush", new FlowerPotBlock(FROZEN_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_DEAD_BUSH).nonOpaque()));
+    public static final Block DEAD_SAPLING = registerBlock("dead_sapling", new DeadBushBlock(FabricBlockSettings.copyOf(Blocks.DEAD_BUSH).sounds(BlockSoundGroup.CHERRY_SAPLING).nonOpaque().noCollision()));
+    public static final Block POTTED_FROZEN_BUSH = Registry.register(Registries.BLOCK, new Identifier(DemandingSaplings.MOD_ID, "potted_frozen_bush"),
+            new FlowerPotBlock(FROZEN_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_DEAD_BUSH).nonOpaque()));
+
+    public static final Block POTTED_DEAD_SAPLING = Registry.register(Registries.BLOCK, new Identifier(DemandingSaplings.MOD_ID, "potted_dead_sapling"),
+            new FlowerPotBlock(DEAD_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_DEAD_BUSH).nonOpaque()));
 
     private static Block registerBlock(String name, Block block)
     {
