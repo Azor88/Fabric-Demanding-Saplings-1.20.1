@@ -1,7 +1,7 @@
 {
-  "variants": [
+  "variants": {
     "": {
       "model": "demandingsaplings:block/frozen_bush"
     }
-  ]
+  }
 }
