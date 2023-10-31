@@ -13,10 +13,12 @@ import net.minecraft.util.Identifier;
 public class ModItems {
 
     public static final Item FROZEN_BUSH = registerItem("frozen_bush", new Item(new FabricItemSettings()));
+    public static final Item DEAD_SAPLING = registerItem("dead_sapling", new Item(new FabricItemSettings()));
 
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries)
     {
         entries.add(FROZEN_BUSH);
+        entries.add(DEAD_SAPLING);
     }
 
     private static Item registerItem(String name, Item item)

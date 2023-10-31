@@ -1,3 +1,6 @@
 {
-  "item.demandingsaplings.frozen_bush": "Frozen Bush"
+  "item.demandingsaplings.frozen_bush": "Frozen Bush",
+  "item.demandingsaplings.dead_sapling": "Dead Sapling",
+
+  "itemgroup.demanding_saplings": "Demanding Saplings"
 }

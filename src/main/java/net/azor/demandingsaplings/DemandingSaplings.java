@@ -1,5 +1,6 @@
 package net.azor.demandingsaplings;
 
+import net.azor.demandingsaplings.item.ModItemGroups;
 import net.azor.demandingsaplings.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,8 +13,7 @@ public class DemandingSaplings implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		ModItemGroups.registerItemGroup();
 		ModItems.registerModItems();
-		LOGGER.info("Hello Fabric world!");
 	}
 }
