@@ -1,4 +1,25 @@
 package net.azor.demandingsaplings.datagen;
 
-public class ModModelProvider {
+import net.azor.demandingsaplings.block.ModBlocks;
+import net.azor.demandingsaplings.item.ModItems;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+
+public class ModModelProvider extends FabricModelProvider {
+    public ModModelProvider(FabricDataOutput output) {
+        super(output);
+    }
+
+    @Override
+    public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.FROZEN_BUSH, ModBlocks.POTTED_FROZEN_BUSH, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.DEAD_SAPLING, ModBlocks.POTTED_DEAD_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+    }
+
+    @Override
+    public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+    }
 }
