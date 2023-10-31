@@ -5,6 +5,7 @@ import net.azor.demandingsaplings.item.ModItemGroups;
 import net.azor.demandingsaplings.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,5 +19,8 @@ public class DemandingSaplings implements ModInitializer {
 
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
+		FuelRegistry.INSTANCE.add(ModBlocks.FROZEN_BUSH, 25);
+		FuelRegistry.INSTANCE.add(ModBlocks.DEAD_SAPLING, 50);
 	}
 }

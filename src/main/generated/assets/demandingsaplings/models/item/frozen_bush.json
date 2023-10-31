@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "demandingsaplings:block/frozen_bush"
+  }
+}

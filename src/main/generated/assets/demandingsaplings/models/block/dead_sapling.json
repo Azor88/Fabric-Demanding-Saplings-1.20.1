@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "demandingsaplings:block/dead_sapling"
+  }
+}
