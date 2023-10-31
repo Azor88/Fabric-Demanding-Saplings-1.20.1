@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "demandingsaplings",
+	"version": "${version}",
+	"name": "Demanding Saplings",
+	"description": "Makes saplings grow only on biomes or temperatures where their respective tree can grow, if it isn't in the correct biome or temperature, it will turn into a dead sapling, dead bush, or a frozen bush, depending on the temperature. Originally made for the Create: Steam n' Rails Season 2 community server modpack.",
+	"authors": [
+		"Azor"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/demandingsaplings/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.azor.demandingsaplings.DemandingSaplings"
+		],
+		"client": [
+			"net.azor.demandingsaplings.DemandingSaplingsClient"
+		],
+		"fabric-datagen": [
+			"net.azor.demandingsaplings.DemandingSaplingsDataGenerator"
+		]
+	},
+	"mixins": [
+		"demandingsaplings.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.24",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
