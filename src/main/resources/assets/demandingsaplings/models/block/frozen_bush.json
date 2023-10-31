@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "demandingsaplings:block/frozen_bush"
+  }
+}

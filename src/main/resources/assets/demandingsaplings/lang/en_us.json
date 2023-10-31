@@ -1,5 +1,6 @@
 {
   "block.demandingsaplings.frozen_bush": "Frozen Bush",
+  "block.demandingsaplings.potted_frozen_bush": "Potted Frozen Bush",
   "item.demandingsaplings.dead_sapling": "Dead Sapling",
 
   "itemgroup.demanding_saplings": "Demanding Saplings"

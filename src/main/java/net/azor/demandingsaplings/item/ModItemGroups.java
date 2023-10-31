@@ -20,7 +20,7 @@ public class ModItemGroups {
                                 entries.add(ModItems.DEAD_SAPLING);
 
                                 entries.add(Modblocks.FROZEN_BUSH);
-                                entries.add(Modblocks.POTTED_FROZEN_BUSH);
+                                //entries.add(Modblocks.POTTED_FROZEN_BUSH);
             }).build());
 
     public static void registerItemGroup()
