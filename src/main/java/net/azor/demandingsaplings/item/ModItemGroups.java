@@ -19,6 +19,7 @@ public class ModItemGroups {
 
                                 entries.add(ModBlocks.FROZEN_BUSH);
                                 entries.add(ModBlocks.DEAD_SAPLING);
+                                entries.add(ModItems.THERMOMETER);
             }).build());
 
     public static void registerItemGroup()

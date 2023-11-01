@@ -1,6 +1,7 @@
 package net.azor.demandingsaplings.item;
 
 import net.azor.demandingsaplings.DemandingSaplings;
+import net.azor.demandingsaplings.item.custom.ThermometerItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -14,6 +15,8 @@ public class ModItems {
 
     //public static final Item FROZEN_BUSH = registerItem("frozen_bush", new Item(new FabricItemSettings()));
     //public static final Item DEAD_SAPLING = registerItem("dead_sapling", new Item(new FabricItemSettings()));
+
+    public static final Item THERMOMETER = registerItem("thermometer", new ThermometerItem(new FabricItemSettings().maxCount(1)));
 
     private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries)
     {

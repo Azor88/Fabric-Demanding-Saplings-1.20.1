@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "  G",
+    "GG ",
+    "RG "
+  ],
+  "result": {
+    "item": "demandingsaplings:thermometer"
+  },
+  "show_notification": true
+}

@@ -2,5 +2,9 @@
   "block.demandingsaplings.frozen_bush": "Frozen Bush",
   "block.demandingsaplings.dead_sapling": "Dead Sapling",
 
-  "itemgroup.demanding_saplings": "Demanding Saplings"
+  "item.demandingsaplings.thermometer": "Thermometer",
+
+  "itemgroup.demanding_saplings": "Demanding Saplings",
+
+  "tooltip.demandingsaplings.thermometer.tooltip": "Measures the temperature on the biome you're at"
 }
