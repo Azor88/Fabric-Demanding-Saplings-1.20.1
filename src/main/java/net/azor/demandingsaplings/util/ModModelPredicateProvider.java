@@ -55,15 +55,15 @@ public class ModModelPredicateProvider {
                     {
                         return 0;
                     }
-                    else if (tempBioma >= -0.4 && tempBioma < 0.2)
+                    else if (tempBioma < 0.2)
                     {
                         return 1;
                     }
-                    else if (tempBioma >= 0.2 && tempBioma < 0.8)
+                    else if (tempBioma < 0.8)
                     {
                         return 2;
                     }
-                    else if (tempBioma >= 0.8 && tempBioma < 1.4)
+                    else if (tempBioma < 1.4)
                     {
                         return 3;
                     }

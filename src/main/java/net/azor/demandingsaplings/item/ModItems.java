@@ -13,16 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItems {
 
-    //public static final Item FROZEN_BUSH = registerItem("frozen_bush", new Item(new FabricItemSettings()));
-    //public static final Item DEAD_SAPLING = registerItem("dead_sapling", new Item(new FabricItemSettings()));
-
     public static final Item THERMOMETER = registerItem("thermometer", new ThermometerItem(new FabricItemSettings().maxCount(1)));
-
-    private static void addItemsToIngredientTabItemGroup(FabricItemGroupEntries entries)
-    {
-        //entries.add(FROZEN_BUSH);
-        //entries.add(DEAD_SAPLING);
-    }
 
     private static Item registerItem(String name, Item item)
     {
@@ -32,7 +23,5 @@ public class ModItems {
     public static void registerModItems()
     {
         DemandingSaplings.LOGGER.info("Registering ModItems for " + DemandingSaplings.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(ModItems::addItemsToIngredientTabItemGroup);
     }
 }
