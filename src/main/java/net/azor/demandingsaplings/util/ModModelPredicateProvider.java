@@ -1,14 +1,10 @@
 package net.azor.demandingsaplings.util;
 
 import net.azor.demandingsaplings.item.ModItems;
-import net.minecraft.client.item.ClampedModelPredicateProvider;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 
 public class ModModelPredicateProvider {
     public static void registerModModels()

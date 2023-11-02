@@ -17,5 +17,6 @@ public class DemandingSaplingsClient  implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DEAD_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_DEAD_SAPLING, RenderLayer.getCutout());
 
-        ModModelPredicateProvider.registerModModels();}
+        ModModelPredicateProvider.registerModModels();
+    }
 }
