@@ -22,6 +22,10 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+<<<<<<< HEAD
         itemModelGenerator.register(ModItems.THERMOMETER, Models.GENERATED);
+=======
+        //itemModelGenerator.register(ModItems.THERMOMETER, Models.GENERATED);
+>>>>>>> 84a60fe (Thermometer now tells you the temperature value of its given biome location, it also now updated its texture, although not completely functional.)
     }
 }
