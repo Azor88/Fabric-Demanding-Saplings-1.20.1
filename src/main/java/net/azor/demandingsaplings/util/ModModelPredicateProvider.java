@@ -57,27 +57,22 @@ public class ModModelPredicateProvider {
 
                     if (tempBioma < -0.4)
                     {
-                        System.out.println("congelado");
                         return 0;
                     }
                     else if (tempBioma >= -0.4 && tempBioma < 0.2)
                     {
-                        System.out.println("frio");
                         return 1;
                     }
                     else if (tempBioma >= 0.2 && tempBioma < 0.8)
                     {
-                        System.out.println("normal");
                         return 2;
                     }
                     else if (tempBioma >= 0.8 && tempBioma < 1.4)
                     {
-                        System.out.println("caliente");
                         return 3;
                     }
                     else
                     {
-                        System.out.println("ardiendo");
                         return 4;
                     }
                 }
