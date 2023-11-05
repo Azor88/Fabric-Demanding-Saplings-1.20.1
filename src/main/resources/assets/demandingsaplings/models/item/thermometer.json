@@ -1,36 +1,36 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "demandingsaplings:item/thermometer_1"
+    "layer0": "demandingsaplings:item/thermometer"
   },
   "overrides": [
     {
       "predicate": {
-        "temp_measurement": 0
+        "temp_measurement": 0.0
       },
       "model": "demandingsaplings:item/thermometer"
     },
     {
       "predicate": {
-        "temp_measurement": 1
+        "temp_measurement": 0.2
       },
       "model": "demandingsaplings:item/thermometer_0"
     },
     {
       "predicate": {
-        "temp_measurement": 2
+        "temp_measurement": 0.4
       },
       "model": "demandingsaplings:item/thermometer_1"
     },
     {
       "predicate": {
-        "temp_measurement": 3
+        "temp_measurement": 0.6
       },
       "model": "demandingsaplings:item/thermometer_2"
     },
     {
       "predicate": {
-        "temp_measurement": 4
+        "temp_measurement": 0.8
       },
       "model": "demandingsaplings:item/thermometer_3"
     }
