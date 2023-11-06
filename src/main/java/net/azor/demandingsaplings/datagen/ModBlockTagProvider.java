@@ -1,8 +1,11 @@
 package net.azor.demandingsaplings.datagen;
 
 import net.azor.demandingsaplings.block.ModBlocks;
+import net.azor.demandingsaplings.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -23,5 +26,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.FROZEN_BUSH)
                 .add(ModBlocks.DEAD_SAPLING);
+
+        getOrCreateTagBuilder(ModTags.Blocks.TEMPERATURE_DEPENDANT)
+                .forceAddTag(BlockTags.SAPLINGS)
+                .add(Blocks.CRIMSON_FUNGUS)
+                .add(Blocks.WARPED_FUNGUS);
     }
 }

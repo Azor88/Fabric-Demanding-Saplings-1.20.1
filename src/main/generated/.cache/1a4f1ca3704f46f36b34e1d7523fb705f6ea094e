@@ -1,3 +1,4 @@
-// 1.20.1	2023-10-31T08:59:47.1889495	Demanding Saplings/Tags for minecraft:block
+// 1.20.1	2023-11-06T06:20:04.3992632	Demanding Saplings/Tags for minecraft:block
 1bc2dd6bcc03223386eb3f235b3f85783a311464 data\minecraft\tags\blocks\mineable\axe.json
+351b4b032ebda025a82596e2dfc982ca7f4a81ed data\demandingsaplings\tags\blocks\temperature_dependant.json
 1bc2dd6bcc03223386eb3f235b3f85783a311464 data\minecraft\tags\blocks\flower_pots.json

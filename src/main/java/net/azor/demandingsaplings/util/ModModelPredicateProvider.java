@@ -34,7 +34,7 @@ public class ModModelPredicateProvider {
         });
     }
 
-    public static float getTempValue(World world, Entity entity) {
+    private static float getTempValue(World world, Entity entity) {
         float posY = entity.getBlockY();
         float temp = world.getBiomeAccess().getBiome(entity.getBlockPos()).value().getTemperature();
 
