@@ -22,5 +22,7 @@ public class DemandingSaplings implements ModInitializer {
 
 		FuelRegistry.INSTANCE.add(ModBlocks.FROZEN_BUSH, 25);
 		FuelRegistry.INSTANCE.add(ModBlocks.DEAD_SAPLING, 50);
+
+
 	}
 }

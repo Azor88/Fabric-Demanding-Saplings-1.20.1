@@ -1,0 +1,77 @@
+{
+
+  "minecraft:acacia_sapling" : {
+    "min_temperature": 2,
+    "max_temperature": 2,
+    "compatible_biomes": [
+      "minecraft:is_savanna"
+    ]
+  },
+  "minecraft:azalea" : {
+    "min_temperature": 0.5,
+    "max_temperature": 0.5,
+    "compatible_biomes": [
+      "minecraft:is_overworld"
+    ]
+  },
+  "minecraft:birch_sapling" : {
+    "min_temperature": 0.5,
+    "max_temperature": 0.7,
+    "compatible_biomes": [
+      "minecraft:is_forest"
+    ]
+  },
+  "minecraft:cherry_sapling" : {
+    "min_temperature": 0.5,
+    "max_temperature": 0.5,
+    "compatible_biomes": [
+      "minecraft:is_forest",
+      "minecraft:is_mountain"
+    ]
+  },
+  "minecraft:dark_oak_sapling" : {
+    "min_temperature": 0.7,
+    "max_temperature": 0.7,
+    "compatible_biomes": [
+      "minecraft:dark_forest"
+    ]
+  },
+  "minecraft:flowering_azalea" : {
+    "min_temperature": 0.5,
+    "max_temperature": 0.5,
+    "compatible_biomes": [
+      "minecraft:is_overworld"
+    ]
+  },
+  "minecraft:jungle_sapling" : {
+    "min_temperature": 0.95,
+    "max_temperature": 0.95,
+    "compatible_biomes": [
+      "minecraft:is_jungle"
+    ]
+  },
+  "minecraft:mangrove_propagule" : {
+    "min_temperature": 0.8,
+    "max_temperature": 0.8,
+    "compatible_biomes": [
+      "minecraft:mangrove_swamp",
+      "minecraft:swamp"
+    ]
+  },
+  "minecraft:oak_sapling" : {
+    "min_temperature": 0.5,
+    "max_temperature": 2,
+    "compatible_biomes": [
+      "minecraft:is_forest",
+      "minecraft:is_badlands",
+      "minecraft:is_mountains"
+    ]
+  },
+  "minecraft:spruce_sapling" : {
+    "min_temperature": -0.5,
+    "max_temperature": 0.7,
+    "compatible_biomes": [
+      "minecraft:is_taiga"
+    ]
+  }
+}
