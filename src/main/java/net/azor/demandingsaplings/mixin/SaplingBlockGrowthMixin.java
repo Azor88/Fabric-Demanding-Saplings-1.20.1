@@ -32,6 +32,8 @@ public abstract class SaplingBlockGrowthMixin {
         if (state.get(STAGE) == 0) return;
         if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT)) {
 
+            //if (sapling.getName().getString() )
+
             if (tempValue >= 1.9 && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_OVERWORLD)) {
                 world.setBlockState(pos, ModBlocks.DEAD_SAPLING.getDefaultState());
                 world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
