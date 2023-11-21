@@ -15,7 +15,7 @@ public class DemandingSaplingsConfig implements ConfigData {
     @Comment("Temperature range of the sapling, minimum = -1, maximum = 2.5")
     public float[] DEFAULTRANGE = new float[]{-0.2f, 1f};
     public float[] ACACIARANGE = new float[]{1.8f, 2.2f};
-    public float[] AZALEASRANGE = new float[]{0.45f, 0.55f};
+    public float[] AZALEASRANGE = new float[]{0.45f, 0.75f};
     public float[] BIRCHRANGE = new float[]{0.4f, 0.8f};
     public float[] CHERRYRANGE = new float[]{0.4f, 0.55f};
     public float[] DARKOAKRANGE = new float[]{0.65f, 0.8f};

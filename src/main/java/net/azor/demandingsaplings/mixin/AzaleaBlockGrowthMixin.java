@@ -1,6 +1,8 @@
 package net.azor.demandingsaplings.mixin;
 
+import net.azor.demandingsaplings.DemandingSaplings;
 import net.azor.demandingsaplings.block.ModBlocks;
+import net.azor.demandingsaplings.config.DemandingSaplingsConfig;
 import net.azor.demandingsaplings.util.ModTags;
 import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.AzaleaBlock;
@@ -29,9 +31,16 @@ public abstract class AzaleaBlockGrowthMixin {
         float tempValue = TemperatureHandler.getTemperature(biomeTemperature, pos); //Not Functional yet
         Block sapling = world.getBlockState(pos).getBlock();
 
-        if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT)) {
+        if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT) && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_OVERWORLD)) {
+            float[] tempRange = DemandingSaplings.CONFIG.AZALEASRANGE;
 
-            if (world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_OVERWORLD)) {
+            float min = Math.min(tempRange[0], tempRange[1]);
+            float max = Math.max(tempRange[0], tempRange[1]);
+
+            float minTemp = Math.max(min, -1f);
+            float maxTemp = Math.min(max, 2.5f);
+
+            if (tempValue < minTemp || tempValue > maxTemp) {
                 world.setBlockState(pos, ModBlocks.DEAD_SAPLING.getDefaultState());
                 world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
                 ci.cancel();
