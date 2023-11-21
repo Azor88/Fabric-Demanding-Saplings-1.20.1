@@ -6,5 +6,12 @@
 
   "itemgroup.demanding_saplings": "Demanding Saplings",
 
-  "tooltip.demandingsaplings.thermometer.tooltip": "Measures the temperature on the biome you're at"
+  "tooltip.demandingsaplings.thermometer.tooltip": "Measures the temperature on the biome you're at",
+
+  "item.demandingsaplings.thermometer.reading": "Temperature is: ",
+  "item.demandingsaplings.thermometer.freezing": "Freezing",
+  "item.demandingsaplings.thermometer.cold": "Cold",
+  "item.demandingsaplings.thermometer.temper": "Temper",
+  "item.demandingsaplings.thermometer.hot": "Hot",
+  "item.demandingsaplings.thermometer.burning": "Burning"
 }

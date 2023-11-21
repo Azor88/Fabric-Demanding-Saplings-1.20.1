@@ -1,18 +1,15 @@
 package net.azor.demandingsaplings.item.custom;
 
-import net.azor.demandingsaplings.block.ModBlocks;
+import net.azor.demandingsaplings.DemandingSaplings;
 import net.azor.demandingsaplings.util.ModTags;
+import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -73,32 +70,18 @@ public class ThermometerItem extends Item {
     }
 
     private void outputTemperature(PlayerEntity player, String temp) {
-        player.sendMessage(Text.literal("Temperature is: " + temp), true);
+        player.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.reading").getString() + temp), true);
     }
 
     private String getTemperature(World world, PlayerEntity player) {
         DecimalFormat df = new DecimalFormat("#.##");
-
-        float posX = (float)player.getX();
-        float posY = (float)player.getY();
-        float posZ = (float)player.getZ();
 
         Biome bioma = world.getBiomeAccess().getBiome(player.getBlockPos()).value();
 
 
         float tempBase = bioma.getTemperature();
 
-        double tempBioma = 0;
-        double tempRestador = 0.00125;
-
-        if (posY <= 80) {
-            tempBioma = tempBase;
-        }
-        else if (posY >= 81) {
-            int altura = (int)posY - 81;
-            double totalResta = altura * tempRestador;
-            tempBioma = tempBase - totalResta;
-        }
+        double tempBioma = TemperatureHandler.getTemperature(tempBase, player.getBlockPos());
 
         //En Minecraft, la temperatura base mas alta de un bioma es 2, y la mas baja es -0.7
         //Formula Celsius a Fahrenheit = (Cx(9/5))+32
@@ -108,13 +91,36 @@ public class ThermometerItem extends Item {
         double tempCelsius = tempBioma * 25;
         double tempFahrenheit = (tempCelsius*1.8)+32;
 
+        if (DemandingSaplings.CONFIG.THERMOMETERDATA.getPreciseReading()) {
+            if (tempBioma < -0.4f) {
+                return Text.translatable("item.demandingsaplings.thermometer.freezing").getString();
+            }
+            else if (tempBioma < 0.2f) {
+                return Text.translatable("item.demandingsaplings.thermometer.cold").getString();
+            }
+            else if (tempBioma < 0.8f) {
+                return Text.translatable("item.demandingsaplings.thermometer.temper").getString();
+            }
+            else if (tempBioma < 1.4f) {
+                return Text.translatable("item.demandingsaplings.thermometer.hot").getString();
+            }
+            else {
+                return Text.translatable("item.demandingsaplings.thermometer.burning").getString();
+            }
+        }
+
         System.out.println(tempBioma + "=" + tempCelsius + " " + tempFahrenheit);
 
-        //String coords = df.format(posX) + " " + df.format(posY) + " " + df.format(posZ);
-        //String temperatura = "" + df.format(tempBioma);
-        String temperatura = "" + df.format(tempCelsius) + "°C/" + df.format(tempFahrenheit) + "°F";
-
-        return temperatura;
+        switch (DemandingSaplings.CONFIG.THERMOMETERDATA.getReadingMode()) {
+            case BOTH:
+                return df.format(tempCelsius) + "°C/" + df.format(tempFahrenheit) + "°F";
+            case CELSIUS:
+                return df.format(tempCelsius) + "°C";
+            case FAHRENHEIT:
+                return df.format(tempFahrenheit) + "°F";
+            default:
+                return "";
+        }
     }
 
     @Override
