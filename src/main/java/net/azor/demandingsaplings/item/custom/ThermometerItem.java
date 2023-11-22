@@ -32,7 +32,6 @@ public class ThermometerItem extends Item {
         if (!context.getWorld().isClient()) {
             BlockPos pos = context.getBlockPos();
             PlayerEntity player = context.getPlayer();
-
             BlockState state = context.getWorld().getBlockState(pos);
 
             if (SaplingFound(state)) {
@@ -77,10 +76,7 @@ public class ThermometerItem extends Item {
         DecimalFormat df = new DecimalFormat("#.##");
 
         Biome bioma = world.getBiomeAccess().getBiome(player.getBlockPos()).value();
-
-
         float tempBase = bioma.getTemperature();
-
         double tempBioma = TemperatureHandler.getTemperature(tempBase, player.getBlockPos());
 
         //En Minecraft, la temperatura base mas alta de un bioma es 2, y la mas baja es -0.7
