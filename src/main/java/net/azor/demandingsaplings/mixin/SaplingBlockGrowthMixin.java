@@ -29,7 +29,7 @@ public abstract class SaplingBlockGrowthMixin {
     public void generate(ServerWorld world, BlockPos pos, BlockState state, Random random, CallbackInfo ci) {
 
         float biomeTemperature = world.getBiomeAccess().getBiome(pos).value().getTemperature();
-        float tempValue = TemperatureHandler.getTemperature(biomeTemperature, pos); //Not Functional yet
+        float tempValue = TemperatureHandler.getTemperature(biomeTemperature, pos);
         Block sapling = world.getBlockState(pos).getBlock();
 
         if (state.get(STAGE) == 0) return;

@@ -13,13 +13,13 @@ public class DemandingSaplingsConfig implements ConfigData {
     public ThermometerData THERMOMETERDATA = new ThermometerData(true, ThermometerData.ReadingMode.BOTH);
 
     @Comment("Temperature range of the sapling, minimum = -1, maximum = 2.5")
-    public float[] DEFAULTRANGE = new float[]{-0.25f, 1f};
+    public float[] DEFAULTRANGE = new float[]{-0.6f, 2.1f};
     public float[] ACACIARANGE = new float[]{1.7f, 2.2f};
     public float[] AZALEASRANGE = new float[]{0.4f, 1f};
     public float[] BIRCHRANGE = new float[]{0.4f, 0.8f};
     public float[] CHERRYRANGE = new float[]{0.3f, 0.55f};
     public float[] DARKOAKRANGE = new float[]{0.65f, 0.8f};
-    public float[] JUNGLERANGE = new float[]{0.85f, 1f};
+    public float[] JUNGLERANGE = new float[]{0.85f, 1.95f};
     public float[] MANGROVERANGE = new float[]{0.65f, 0.9f};
     public float[] OAKRANGE = new float[]{0.3f, 2.1f};
     public float[] SPRUCERANGE = new float[]{-0.75f, 0.75f};
