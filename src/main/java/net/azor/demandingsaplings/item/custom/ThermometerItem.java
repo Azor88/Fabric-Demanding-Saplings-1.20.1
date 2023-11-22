@@ -28,35 +28,6 @@ public class ThermometerItem extends Item {
     }
 
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        if (!context.getWorld().isClient()) {
-            BlockPos pos = context.getBlockPos();
-            PlayerEntity player = context.getPlayer();
-            BlockState state = context.getWorld().getBlockState(pos);
-
-            if (SaplingFound(state)) {
-                outputSaplingData(state.getBlock(), player);
-                player.getItemCooldownManager().set(this, 10);
-            }
-            else {
-                String temp = getTemperature(context.getWorld(), player);
-                outputTemperature(player, temp);
-                player.getItemCooldownManager().set(this, 5);
-            }
-        }
-
-        return ActionResult.SUCCESS;
-    }
-
-    private boolean SaplingFound(BlockState state) {
-        return state.isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT);
-    }
-
-    private void outputSaplingData(Block block, PlayerEntity player) {
-        player.sendMessage(Text.literal(block.asItem().getName().getString()));
-    }
-
-    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient() && hand == Hand.MAIN_HAND) {
             String temp = getTemperature(world, user);
