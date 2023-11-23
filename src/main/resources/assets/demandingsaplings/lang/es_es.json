@@ -1,0 +1,17 @@
+{
+  "block.demandingsaplings.frozen_bush": "Arbusto Congelado",
+  "block.demandingsaplings.dead_sapling": "Brote Muerto",
+
+  "item.demandingsaplings.thermometer": "Termómetro",
+
+  "itemgroup.demanding_saplings": "Demanding Saplings",
+
+  "tooltip.demandingsaplings.thermometer.tooltip": "Mide la temperatura del bioma en el que estás.",
+
+  "item.demandingsaplings.thermometer.reading": "La temperatura es: ",
+  "item.demandingsaplings.thermometer.freezing": "Congelada",
+  "item.demandingsaplings.thermometer.cold": "Fría",
+  "item.demandingsaplings.thermometer.temper": "Templada",
+  "item.demandingsaplings.thermometer.hot": "Caliente",
+  "item.demandingsaplings.thermometer.burning": "Ardiente"
+}
