@@ -2,6 +2,7 @@ package net.azor.demandingsaplings.mixin;
 
 import net.azor.demandingsaplings.DemandingSaplings;
 import net.azor.demandingsaplings.block.ModBlocks;
+import net.azor.demandingsaplings.init.ConfigInit;
 import net.azor.demandingsaplings.util.ModTags;
 import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.Block;
@@ -59,24 +60,24 @@ public abstract class SaplingBlockGrowthMixin {
     private static float[] getTemperatureRange(Block sapling) {
         float[] tempRange = {};
         if (sapling == Blocks.ACACIA_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.ACACIARANGE;
+            tempRange = ConfigInit.CONFIG.ACACIARANGE;
         } else if (sapling == Blocks.BIRCH_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.BIRCHRANGE;
+            tempRange = ConfigInit.CONFIG.BIRCHRANGE;
         } else if (sapling == Blocks.CHERRY_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.CHERRYRANGE;
+            tempRange = ConfigInit.CONFIG.CHERRYRANGE;
         } else if (sapling == Blocks.DARK_OAK_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.DARKOAKRANGE;
+            tempRange = ConfigInit.CONFIG.DARKOAKRANGE;
         } else if (sapling == Blocks.JUNGLE_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.JUNGLERANGE;
+            tempRange = ConfigInit.CONFIG.JUNGLERANGE;
         } else if (sapling == Blocks.MANGROVE_PROPAGULE) {
-            tempRange = DemandingSaplings.CONFIG.MANGROVERANGE;
+            tempRange = ConfigInit.CONFIG.MANGROVERANGE;
         } else if (sapling == Blocks.OAK_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.OAKRANGE;
+            tempRange = ConfigInit.CONFIG.OAKRANGE;
         } else if (sapling == Blocks.SPRUCE_SAPLING) {
-            tempRange = DemandingSaplings.CONFIG.SPRUCERANGE;
+            tempRange = ConfigInit.CONFIG.SPRUCERANGE;
         }
         else {
-            tempRange = DemandingSaplings.CONFIG.DEFAULTRANGE;
+            tempRange = ConfigInit.CONFIG.DEFAULTRANGE;
         }
         return tempRange;
     }

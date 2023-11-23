@@ -9,7 +9,7 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Azor88/Fabric-Demanding-Saplings-1.20.1"
 	},
 	"license": "MIT",
 	"icon": "assets/demandingsaplings/icon.png",

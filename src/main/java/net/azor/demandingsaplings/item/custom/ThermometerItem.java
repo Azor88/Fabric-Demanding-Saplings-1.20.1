@@ -1,6 +1,7 @@
 package net.azor.demandingsaplings.item.custom;
 
 import net.azor.demandingsaplings.DemandingSaplings;
+import net.azor.demandingsaplings.init.ConfigInit;
 import net.azor.demandingsaplings.util.ModTags;
 import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.Block;
@@ -58,7 +59,7 @@ public class ThermometerItem extends Item {
         double tempCelsius = tempBioma * 25;
         double tempFahrenheit = (tempCelsius*1.8)+32;
 
-        if (DemandingSaplings.CONFIG.THERMOMETERDATA.getPreciseReading()) {
+        if (ConfigInit.CONFIG.THERMOMETERDATA.getPreciseReading()) {
             if (tempBioma < -0.4f) {
                 return Text.translatable("item.demandingsaplings.thermometer.freezing").getString();
             }
@@ -78,7 +79,7 @@ public class ThermometerItem extends Item {
 
         System.out.println(tempBioma + "=" + tempCelsius + " " + tempFahrenheit);
 
-        switch (DemandingSaplings.CONFIG.THERMOMETERDATA.getReadingMode()) {
+        switch (ConfigInit.CONFIG.THERMOMETERDATA.getReadingMode()) {
             case BOTH:
                 return df.format(tempCelsius) + "°C/" + df.format(tempFahrenheit) + "°F";
             case CELSIUS:

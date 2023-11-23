@@ -2,6 +2,7 @@ package net.azor.demandingsaplings.mixin;
 
 import net.azor.demandingsaplings.DemandingSaplings;
 import net.azor.demandingsaplings.block.ModBlocks;
+import net.azor.demandingsaplings.init.ConfigInit;
 import net.azor.demandingsaplings.util.ModTags;
 import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.*;
@@ -29,7 +30,7 @@ public abstract class AzaleaBlockGrowthMixin {
         Block sapling = world.getBlockState(pos).getBlock();
 
         if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT) && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_OVERWORLD)) {
-            float[] tempRange = DemandingSaplings.CONFIG.AZALEASRANGE;
+            float[] tempRange = ConfigInit.CONFIG.AZALEASRANGE;
 
             float min = Math.min(tempRange[0], tempRange[1]);
             float max = Math.max(tempRange[0], tempRange[1]);
