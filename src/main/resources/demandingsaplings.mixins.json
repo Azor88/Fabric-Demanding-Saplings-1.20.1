@@ -3,9 +3,9 @@
 	"package": "net.azor.demandingsaplings.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin",
 		"SaplingBlockGrowthMixin",
-		"AzaleaBlockGrowthMixin"
+		"AzaleaBlockGrowthMixin",
+		"FungusBlockGrowthMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -21,15 +21,22 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.FROZEN_BUSH)
-                .add(ModBlocks.DEAD_SAPLING);
+                .add(ModBlocks.DEAD_SAPLING)
+                .add(ModBlocks.DEAD_FUNGUS);
 
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.FROZEN_BUSH)
-                .add(ModBlocks.DEAD_SAPLING);
+                .add(ModBlocks.DEAD_SAPLING)
+                .add(ModBlocks.DEAD_FUNGUS);
 
         getOrCreateTagBuilder(ModTags.Blocks.TEMPERATURE_DEPENDANT)
                 .forceAddTag(BlockTags.SAPLINGS)
                 .add(Blocks.CRIMSON_FUNGUS)
                 .add(Blocks.WARPED_FUNGUS);
+
+        getOrCreateTagBuilder(BlockTags.DEAD_BUSH_MAY_PLACE_ON)
+                .add(Blocks.CRIMSON_NYLIUM)
+                .add(Blocks.WARPED_NYLIUM)
+                .add(Blocks.NETHERRACK);
     }
 }

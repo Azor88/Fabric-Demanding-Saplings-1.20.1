@@ -20,5 +20,6 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addPottedPlantDrops(ModBlocks.POTTED_FROZEN_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_DEAD_SAPLING);
+        addPottedPlantDrops(ModBlocks.POTTED_DEAD_FUNGUS);
     }
 }

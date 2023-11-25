@@ -52,12 +52,12 @@ public abstract class SaplingBlockGrowthMixin {
                 if (difference < 0.25) { //Chance of the sapling to still grow even if the temperature is outside its compatible range
                     dies = SaplingKiller.getChance(difference);
                     if (dies) {
-                        SaplingKiller.killSapling(world, pos, 0, 0.25f, true);
+                        SaplingKiller.killSapling(world, pos, 0, 0.25f, true, false);
                         ci.cancel();
                     }
                 }
                 else {
-                    SaplingKiller.killSapling(world, pos, tempValue, minTemp, true);
+                    SaplingKiller.killSapling(world, pos, tempValue, minTemp, true, false);
                     ci.cancel();
                 }
             }
@@ -67,22 +67,22 @@ public abstract class SaplingBlockGrowthMixin {
                 if (difference < 0.25) { //Chance of the sapling to still grow even if the temperature is outside its compatible range
                     dies = SaplingKiller.getChance(difference);
                     if (dies) {
-                        SaplingKiller.killSapling(world, pos, 0, 0.25f, false);
+                        SaplingKiller.killSapling(world, pos, 0, 0.25f, false, false);
                         ci.cancel();
                     }
                 }
                 else {
-                    SaplingKiller.killSapling(world, pos, tempValue, maxTemp, false);
+                    SaplingKiller.killSapling(world, pos, tempValue, maxTemp, false, false);
                     ci.cancel();
                 }
             }
         }
         else if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT)  && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_END)) {
-            SaplingKiller.killSapling(world, pos, 0, -1, true);
+            SaplingKiller.killSapling(world, pos, 0, -1, true, false);
             ci.cancel();
         }
         else if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT)  && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_NETHER)) {
-            SaplingKiller.killSapling(world, pos, 0, 2.5f, false);
+            SaplingKiller.killSapling(world, pos, 0, 2.5f, false, false);
             ci.cancel();
         }
     }

@@ -10,20 +10,24 @@ import net.minecraft.util.math.BlockPos;
 import java.util.Random;
 
 public class SaplingKiller {
-    public static void killSapling(ServerWorld world, BlockPos pos, float tempValue, float limitTemp, boolean colder) {
+    public static void killSapling(ServerWorld world, BlockPos pos, float tempValue, float limitTemp, boolean colder, boolean isFungus) {
         float difference = Math.abs(tempValue - limitTemp);
         boolean dies = true;
-        if (difference > 0.75f && colder) { //Absolute death of sapling
-            world.setBlockState(pos, ModBlocks.FROZEN_BUSH.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
+        if (isFungus) {
+            world.setBlockState(pos, ModBlocks.DEAD_FUNGUS.getDefaultState());
+            world.playSound(null, pos, SoundEvents.BLOCK_FUNGUS_BREAK, SoundCategory.BLOCKS, 1f, 1.5f);
         }
-        else if (difference > 0.75f) { //Absolute death of sapling
-            world.setBlockState(pos, Blocks.DEAD_BUSH.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
-        }
-        else { //Absolute death of sapling
-            world.setBlockState(pos, ModBlocks.DEAD_SAPLING.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
+        else {
+            if (difference > 0.75f && colder) { //Absolute death of sapling
+                world.setBlockState(pos, ModBlocks.FROZEN_BUSH.getDefaultState());
+                world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS, 1f, 1.5f);
+            } else if (difference > 0.75f) { //Absolute death of sapling
+                world.setBlockState(pos, Blocks.DEAD_BUSH.getDefaultState());
+                world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS, 1f, 0.5f);
+            } else { //Absolute death of sapling
+                world.setBlockState(pos, ModBlocks.DEAD_SAPLING.getDefaultState());
+                world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS, 1f, 1f);
+            }
         }
     }
 

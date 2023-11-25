@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "demandingsaplings:frozen_bush",
-    "demandingsaplings:dead_sapling"
+    "demandingsaplings:dead_sapling",
+    "demandingsaplings:dead_fungus"
   ]
 }
