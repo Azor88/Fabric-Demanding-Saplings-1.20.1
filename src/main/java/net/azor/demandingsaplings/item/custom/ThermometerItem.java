@@ -77,8 +77,6 @@ public class ThermometerItem extends Item {
             }
         }
 
-        System.out.println(tempBioma + "=" + tempCelsius + " " + tempFahrenheit);
-
         switch (ConfigInit.CONFIG.THERMOMETERDATA.getReadingMode()) {
             case BOTH:
                 return df.format(tempCelsius) + "°C/" + df.format(tempFahrenheit) + "°F";

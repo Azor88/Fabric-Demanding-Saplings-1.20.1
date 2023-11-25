@@ -4,6 +4,7 @@ import net.azor.demandingsaplings.DemandingSaplings;
 import net.azor.demandingsaplings.block.ModBlocks;
 import net.azor.demandingsaplings.init.ConfigInit;
 import net.azor.demandingsaplings.util.ModTags;
+import net.azor.demandingsaplings.util.SaplingKiller;
 import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -43,16 +44,46 @@ public abstract class SaplingBlockGrowthMixin {
 
             float minTemp = Math.max(min, -1f);
             float maxTemp = Math.min(max, 2.5f);
+            float difference;
+            boolean dies;
 
             if (tempValue < minTemp) {
-                killSapling(world, pos, tempValue, minTemp, true);
-                ci.cancel();
+                difference = Math.abs(tempValue - minTemp);
+                if (difference < 0.25) { //Chance of the sapling to still grow even if the temperature is outside its compatible range
+                    dies = SaplingKiller.getChance(difference);
+                    if (dies) {
+                        SaplingKiller.killSapling(world, pos, 0, 0.25f, true);
+                        ci.cancel();
+                    }
+                }
+                else {
+                    SaplingKiller.killSapling(world, pos, tempValue, minTemp, true);
+                    ci.cancel();
+                }
             }
 
             if (tempValue > maxTemp) {
-                killSapling(world, pos, tempValue, maxTemp, false);
-                ci.cancel();
+                difference = Math.abs(tempValue - maxTemp);
+                if (difference < 0.25) { //Chance of the sapling to still grow even if the temperature is outside its compatible range
+                    dies = SaplingKiller.getChance(difference);
+                    if (dies) {
+                        SaplingKiller.killSapling(world, pos, 0, 0.25f, false);
+                        ci.cancel();
+                    }
+                }
+                else {
+                    SaplingKiller.killSapling(world, pos, tempValue, maxTemp, false);
+                    ci.cancel();
+                }
             }
+        }
+        else if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT)  && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_END)) {
+            SaplingKiller.killSapling(world, pos, 0, -1, true);
+            ci.cancel();
+        }
+        else if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT)  && world.getBiomeAccess().getBiome(pos).isIn(BiomeTags.IS_NETHER)) {
+            SaplingKiller.killSapling(world, pos, 0, 2.5f, false);
+            ci.cancel();
         }
     }
 
@@ -80,22 +111,5 @@ public abstract class SaplingBlockGrowthMixin {
             tempRange = ConfigInit.CONFIG.DEFAULTRANGE;
         }
         return tempRange;
-    }
-
-    @Unique
-    public void killSapling(ServerWorld world, BlockPos pos, float tempValue, float limitTemp, boolean colder) {
-        float difference = Math.abs(tempValue - limitTemp);
-        if (difference > 0.5f && colder) {
-            world.setBlockState(pos, ModBlocks.FROZEN_BUSH.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
-        }
-        else if (difference > 0.5f) {
-            world.setBlockState(pos, Blocks.DEAD_BUSH.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
-        }
-        else {
-            world.setBlockState(pos, ModBlocks.DEAD_SAPLING.getDefaultState());
-            world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS);
-        }
     }
 }

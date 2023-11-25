@@ -4,9 +4,6 @@ import net.minecraft.util.math.BlockPos;
 
 public class TemperatureHandler {
     private static final double tempSubtractor = 0.00125;
-
-
-
     public static float getTemperature(float biomeTemperature, BlockPos position) {
         float posY = position.getY();
 
