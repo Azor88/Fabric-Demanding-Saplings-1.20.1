@@ -26,7 +26,7 @@ public class SaplingKiller {
                 world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS, 1f, 0.5f);
             } else { //Absolute death of sapling
                 world.setBlockState(pos, ModBlocks.DEAD_SAPLING.getDefaultState());
-                world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS, 1f, 1f);
+                world.playSound(null, pos, SoundEvents.BLOCK_CHERRY_SAPLING_BREAK, SoundCategory.BLOCKS, 1f, 1.2f);
             }
         }
     }
