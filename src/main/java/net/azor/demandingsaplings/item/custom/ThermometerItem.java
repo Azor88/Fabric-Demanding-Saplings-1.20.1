@@ -1,21 +1,13 @@
 package net.azor.demandingsaplings.item.custom;
 
-import net.azor.demandingsaplings.DemandingSaplings;
-import net.azor.demandingsaplings.init.ConfigInit;
-import net.azor.demandingsaplings.util.ModTags;
 import net.azor.demandingsaplings.util.TemperatureHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
@@ -30,21 +22,65 @@ public class ThermometerItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (!world.isClient() && hand == Hand.MAIN_HAND) {
-            String temp = getTemperature(world, user);
+        ItemStack stack = user.getStackInHand(hand);
+        if (!world.isClient() && hand == Hand.MAIN_HAND && !user.isSneaking()) {
+            if (getThermometerModeNBTData(stack).isEmpty()) {
+                setThermometerModeNBTData(stack, THERMOMETERMODES.SIMPLE.toString());
+            }
+
+            String temp = getTemperature(world, user, hand);
             outputTemperature(user, temp);
 
-            user.getItemCooldownManager().set(this, 5);
+            user.getItemCooldownManager().set(this, 3);
+        }
+        else if (!world.isClient() && hand == Hand.MAIN_HAND && user.isSneaking()) { //Change the temperature reading mode, used to be changed with config
+            if (getThermometerModeNBTData(stack).isEmpty()) {
+                setThermometerModeNBTData(stack, THERMOMETERMODES.SIMPLE.toString());
+                user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.simple").getString()), true);
+            }
+
+            if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.SIMPLE.toString())) {
+                setThermometerModeNBTData(stack, THERMOMETERMODES.PRECISE_CELSIUS.toString());
+                user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.precise_c").getString()), true);
+            }
+            else if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_CELSIUS.toString())) {
+                setThermometerModeNBTData(stack, THERMOMETERMODES.PRECISE_FAHRENHEIT.toString());
+                user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.precise_f").getString()), true);
+            }
+            else if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_FAHRENHEIT.toString())) {
+                setThermometerModeNBTData(stack, THERMOMETERMODES.PRECISE_BOTH.toString());
+                user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.precise_c_f").getString()), true);
+            }
+            else if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_BOTH.toString())) {
+                setThermometerModeNBTData(stack, THERMOMETERMODES.SIMPLE.toString());
+                user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.simple").getString()), true);
+            }
+
+            user.getItemCooldownManager().set(this, 2);
         }
 
         return super.use(world, user, hand);
+    }
+
+    private void setThermometerModeNBTData(ItemStack stack, String key) {
+        stack.getOrCreateNbt().putString("THERMOMETER_MODE_KEY", key);
+    }
+
+    private static String getThermometerModeNBTData(ItemStack stack) {
+        if (!stack.getOrCreateNbt().contains("THERMOMETER_MODE_KEY")) {
+            return "";
+        }
+        else
+            return stack.getOrCreateNbt().getString("THERMOMETER_MODE_KEY");
     }
 
     private void outputTemperature(PlayerEntity player, String temp) {
         player.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.reading").getString() + temp), true);
     }
 
-    private String getTemperature(World world, PlayerEntity player) {
+    private String getTemperature(World world, PlayerEntity player, Hand hand) {
+
+        ItemStack stack = player.getStackInHand(hand);
         DecimalFormat df = new DecimalFormat("#.##");
 
         Biome bioma = world.getBiomeAccess().getBiome(player.getBlockPos()).value();
@@ -59,7 +95,7 @@ public class ThermometerItem extends Item {
         double tempCelsius = tempBioma * 25;
         double tempFahrenheit = (tempCelsius*1.8)+32;
 
-        if (ConfigInit.CONFIG.THERMOMETERDATA.getPreciseReading()) {
+        if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.SIMPLE.toString())) {
             if (tempBioma < -0.4f) {
                 return Text.translatable("item.demandingsaplings.thermometer.freezing").getString();
             }
@@ -77,21 +113,28 @@ public class ThermometerItem extends Item {
             }
         }
 
-        switch (ConfigInit.CONFIG.THERMOMETERDATA.getReadingMode()) {
-            case BOTH:
-                return df.format(tempCelsius) + "°C/" + df.format(tempFahrenheit) + "°F";
-            case CELSIUS:
-                return df.format(tempCelsius) + "°C";
-            case FAHRENHEIT:
-                return df.format(tempFahrenheit) + "°F";
-            default:
-                return "";
+        if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_BOTH.toString())) {
+            return df.format(tempCelsius) + "°C/" + df.format(tempFahrenheit) + "°F";
         }
+        else if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_CELSIUS.toString())) {
+            return df.format(tempCelsius) + "°C";
+        }
+        else if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_FAHRENHEIT.toString())) {
+            return df.format(tempFahrenheit) + "°F";
+        }
+        else return "";
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("tooltip.demandingsaplings.thermometer.tooltip"));
         super.appendTooltip(stack, world, tooltip, context);
+    }
+
+    public enum THERMOMETERMODES {
+        SIMPLE,
+        PRECISE_CELSIUS,
+        PRECISE_FAHRENHEIT,
+        PRECISE_BOTH
     }
 }

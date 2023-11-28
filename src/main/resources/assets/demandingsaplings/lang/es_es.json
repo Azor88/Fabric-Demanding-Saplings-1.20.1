@@ -14,5 +14,10 @@
   "item.demandingsaplings.thermometer.cold": "Fría",
   "item.demandingsaplings.thermometer.temper": "Templada",
   "item.demandingsaplings.thermometer.hot": "Caliente",
-  "item.demandingsaplings.thermometer.burning": "Ardiente"
+  "item.demandingsaplings.thermometer.burning": "Ardiente",
+
+  "item.demandingsaplings.thermometer.simple": "MOSTRAR DATOS SIMPLES",
+  "item.demandingsaplings.thermometer.precise_c": "MOSTRAR CELSIUS",
+  "item.demandingsaplings.thermometer.precise_f": "MOSTRAR FAHRENHEIT",
+  "item.demandingsaplings.thermometer.precise_c_f": "MOSTRAR CELSIUS Y FAHRENHEIT"
 }

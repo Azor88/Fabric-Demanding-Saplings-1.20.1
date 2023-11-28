@@ -3,14 +3,10 @@ package net.azor.demandingsaplings.config;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
-import net.azor.demandingsaplings.config.datatype.ThermometerData;
 
 @Config(name = "demandingsaplings")  // <-- name of config file
 @Config.Gui.Background("minecraft:textures/block/dirt.png")  // for ingame config editing screen...
 public class DemandingSaplingsConfig implements ConfigData {
-
-    @Comment("Thermometer will display simple temperature readings(TRUE) or precise ones using Celsius and/or Fahrenheit(FALSE)")
-    public ThermometerData THERMOMETERDATA = new ThermometerData(true, ThermometerData.ReadingMode.BOTH);
 
     @Comment("Temperature range of the sapling, minimum = -1, maximum = 2.5")
     public float[] DEFAULTRANGE = new float[]{-0.6f, 2.1f};
