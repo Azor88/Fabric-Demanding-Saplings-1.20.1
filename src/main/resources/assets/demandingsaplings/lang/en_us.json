@@ -4,10 +4,12 @@
   "block.demandingsaplings.dead_fungus": "Dead Fungus",
 
   "item.demandingsaplings.thermometer": "Thermometer",
+  "item.demandingsaplings.sapling_scanner": "Sapling Scanner",
 
   "itemgroup.demanding_saplings": "Demanding Saplings",
 
   "tooltip.demandingsaplings.thermometer.tooltip": "Measures the temperature on the biome you're at",
+  "tooltip.demandingsaplings.sapling_scanner.tooltip": "Gives you info about the targeted sapling",
 
   "item.demandingsaplings.thermometer.reading": "Temperature is: ",
   "item.demandingsaplings.thermometer.freezing": "Freezing",
@@ -19,5 +21,15 @@
   "item.demandingsaplings.thermometer.simple": "SHOW SIMPLE TERMS",
   "item.demandingsaplings.thermometer.precise_c": "SHOW CELSIUS",
   "item.demandingsaplings.thermometer.precise_f": "SHOW FAHRENHEIT",
-  "item.demandingsaplings.thermometer.precise_c_f": "SHOW CELSIUS AND FAHRENHEIT"
+  "item.demandingsaplings.thermometer.precise_c_f": "SHOW CELSIUS AND FAHRENHEIT",
+
+  "item.demandingsaplings.sapling_scanner.reading_p1": "The ",
+  "item.demandingsaplings.sapling_scanner.reading_p2": " survives in temperatures between ",
+  "item.demandingsaplings.sapling_scanner.reading_p3": " and ",
+  "item.demandingsaplings.sapling_scanner.tip_to_use": "Use this scanner on a sapling!",
+  "item.demandingsaplings.sapling_scanner.yes_chance": "Here this sapling will ",
+  "item.demandingsaplings.sapling_scanner.maybe_chance": "Here this sapling might ",
+  "item.demandingsaplings.sapling_scanner.will_freeze": "freeze",
+  "item.demandingsaplings.sapling_scanner.will_burn": "burn",
+  "item.demandingsaplings.sapling_scanner.will_grow": "grow"
 }

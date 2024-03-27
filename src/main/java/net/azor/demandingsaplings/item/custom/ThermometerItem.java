@@ -33,7 +33,7 @@ public class ThermometerItem extends Item {
 
             user.getItemCooldownManager().set(this, 3);
         }
-        else if (!world.isClient() && hand == Hand.MAIN_HAND && user.isSneaking()) { //Change the temperature reading mode, used to be changed with config
+        else if (!world.isClient() && hand == Hand.MAIN_HAND && user.isSneaking()) { //Change the temperature reading mode
             if (getThermometerModeNBTData(stack).isEmpty()) {
                 setThermometerModeNBTData(stack, THERMOMETERMODES.SIMPLE.toString());
                 user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.simple").getString()), true);

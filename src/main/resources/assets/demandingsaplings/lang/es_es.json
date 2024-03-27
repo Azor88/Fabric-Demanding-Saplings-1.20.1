@@ -4,10 +4,12 @@
   "block.demandingsaplings.dead_fungus": "Hongo Muerto",
 
   "item.demandingsaplings.thermometer": "Termómetro",
+  "item.demandingsaplings.sapling_scanner": "Escáner de Brotes",
 
   "itemgroup.demanding_saplings": "Demanding Saplings",
 
-  "tooltip.demandingsaplings.thermometer.tooltip": "Mide la temperatura del bioma en el que estás.",
+  "tooltip.demandingsaplings.thermometer.tooltip": "Mide la temperatura del bioma en el que estás",
+  "tooltip.demandingsaplings.sapling_scanner.tooltip": "Da información acerca del brote seleccionado",
 
   "item.demandingsaplings.thermometer.reading": "La temperatura es: ",
   "item.demandingsaplings.thermometer.freezing": "Congelada",
@@ -19,5 +21,16 @@
   "item.demandingsaplings.thermometer.simple": "MOSTRAR DATOS SIMPLES",
   "item.demandingsaplings.thermometer.precise_c": "MOSTRAR CELSIUS",
   "item.demandingsaplings.thermometer.precise_f": "MOSTRAR FAHRENHEIT",
-  "item.demandingsaplings.thermometer.precise_c_f": "MOSTRAR CELSIUS Y FAHRENHEIT"
+  "item.demandingsaplings.thermometer.precise_c_f": "MOSTRAR CELSIUS Y FAHRENHEIT",
+
+  "item.demandingsaplings.sapling_scanner.reading_p1": "El ",
+  "item.demandingsaplings.sapling_scanner.reading_p2": ", sobreviven en temperaturas entre ",
+  "item.demandingsaplings.sapling_scanner.reading_p3": " y ",
+  "item.demandingsaplings.sapling_scanner.tip_to_use": "Utiliza este escáner en un brote",
+  "item.demandingsaplings.sapling_scanner.yes_chance": "Aquí este brote ",
+  "item.demandingsaplings.sapling_scanner.maybe_chance": "Aquí este brote talvez ",
+  "item.demandingsaplings.sapling_scanner.will_freeze": "se congela",
+  "item.demandingsaplings.sapling_scanner.will_burn": "se quema",
+  "item.demandingsaplings.sapling_scanner.will_grow": "va a crecer"
+
 }

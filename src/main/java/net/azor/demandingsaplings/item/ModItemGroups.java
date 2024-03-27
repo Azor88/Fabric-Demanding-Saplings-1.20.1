@@ -21,6 +21,7 @@ public class ModItemGroups {
                                 entries.add(ModBlocks.DEAD_SAPLING);
                                 entries.add(ModBlocks.DEAD_FUNGUS);
                                 entries.add(ModItems.THERMOMETER);
+                                entries.add(ModItems.SAPLINGSCANNER);
             }).build());
 
     public static void registerItemGroup()
