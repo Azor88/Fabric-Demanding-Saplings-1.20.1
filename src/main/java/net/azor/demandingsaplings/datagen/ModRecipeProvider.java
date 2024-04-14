@@ -28,5 +28,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GLASS_PANE), conditionsFromItem(Items.GLASS_PANE))
                 .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.THERMOMETER)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.SAPLINGSCANNER, 1)
+                .pattern("SGI")
+                .pattern("tRO")
+                .pattern("OTO")
+                .input('G', Items.GLASS_PANE)
+                .input('S', Items.STRING)
+                .input('I', Items.IRON_INGOT)
+                .input('t', Items.TRIPWIRE_HOOK)
+                .input('R', Items.REDSTONE)
+                .input('O', Items.GOLD_INGOT)
+                .input('T', ModItems.THERMOMETER)
+                .criterion(hasItem(Items.GLASS_PANE), conditionsFromItem(Items.GLASS_PANE))
+                .criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+                .criterion(hasItem(Items.TRIPWIRE_HOOK), conditionsFromItem(Items.TRIPWIRE_HOOK))
+                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+                .criterion(hasItem(ModItems.THERMOMETER), conditionsFromItem(ModItems.THERMOMETER))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SAPLINGSCANNER)));
+
     }
 }

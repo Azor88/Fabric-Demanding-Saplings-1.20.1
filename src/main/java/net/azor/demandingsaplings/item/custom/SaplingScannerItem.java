@@ -2,7 +2,6 @@ package net.azor.demandingsaplings.item.custom;
 
 import net.azor.demandingsaplings.init.ConfigInit;
 import net.azor.demandingsaplings.util.ModTags;
-import net.azor.demandingsaplings.util.SaplingKiller;
 import net.azor.demandingsaplings.util.TemperatureHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -35,6 +34,7 @@ public class SaplingScannerItem extends Item {
             PlayerEntity player = context.getPlayer();
             Block sapling = context.getWorld().getBlockState(clickPosition).getBlock();
 
+            assert player != null;
             ItemStack stack = player.getMainHandStack();
 
             float[] tempRange = getTemperatureRange(sapling);
@@ -97,6 +97,7 @@ public class SaplingScannerItem extends Item {
 
                     player.sendMessage(Text.literal(chanceString), true);
                 }
+                player.getItemCooldownManager().set(this, 2);
             }
         }
 
@@ -106,6 +107,7 @@ public class SaplingScannerItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
+        //Block sapling = world.getBlockState(user.);
         if (!world.isClient() && hand == Hand.MAIN_HAND && user.isSneaking()) { //Change the temperature reading mode
             if (getScannerModeNBTData(stack).isEmpty()) {
                 setscannerModeNBTData(stack, SaplingScannerItem.SCANNERMODES.SIMPLE.toString());
@@ -125,7 +127,6 @@ public class SaplingScannerItem extends Item {
                 setscannerModeNBTData(stack, SaplingScannerItem.SCANNERMODES.SIMPLE.toString());
                 user.sendMessage(Text.literal(Text.translatable("item.demandingsaplings.thermometer.simple").getString()), true);
             }
-
             user.getItemCooldownManager().set(this, 2);
         }
         else if (!world.isClient() && hand == Hand.MAIN_HAND && !user.isSneaking()) {
@@ -152,25 +153,8 @@ public class SaplingScannerItem extends Item {
         double tempCelsius = temp * 25;
         double tempFahrenheit = (tempCelsius*1.8)+32;
 
-        //ALE AQUI AÑADÍ PARA QUE LA TEMPERATURA QUE APAREZCA CORRECTAMENTE DEPENDIENDO DEL MODO DEL ESCÁNER, ASI COMO CON EL TERMÓMETRO,
-        //NAMÁS COPIA Y PEGA :V
-
         if (getScannerModeNBTData(stack).equals(SaplingScannerItem.SCANNERMODES.SIMPLE.toString())) {
-            if (temp < -0.4f) {
-                return Text.translatable("item.demandingsaplings.thermometer.freezing").getString();
-            }
-            else if (temp < 0.2f) {
-                return Text.translatable("item.demandingsaplings.thermometer.cold").getString();
-            }
-            else if (temp < 0.8f) {
-                return Text.translatable("item.demandingsaplings.thermometer.temper").getString();
-            }
-            else if (temp < 1.4f) {
-                return Text.translatable("item.demandingsaplings.thermometer.hot").getString();
-            }
-            else {
-                return Text.translatable("item.demandingsaplings.thermometer.burning").getString();
-            }
+            return TemperatureHandler.getSimpleOutput(temp);
         }
 
         if (getScannerModeNBTData(stack).equals(SaplingScannerItem.SCANNERMODES.PRECISE_BOTH.toString())) {

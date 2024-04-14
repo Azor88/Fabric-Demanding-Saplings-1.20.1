@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "O": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "T": {
+      "item": "demandingsaplings:thermometer"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "OQO",
+    "OTO"
+  ],
+  "result": {
+    "item": "demandingsaplings:sapling_scanner"
+  },
+  "show_notification": true
+}

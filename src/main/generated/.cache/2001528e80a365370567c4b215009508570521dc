@@ -1,3 +1,5 @@
-// 1.20.1	2023-11-25T12:07:12.1647201	Demanding Saplings/Recipes
+// 1.20.1	2024-03-26T21:52:00.9450742	Demanding Saplings/Recipes
+dd0120a04b35e968da557b874e3de4d723200178 data\demandingsaplings\advancements\recipes\tools\sapling_scanner.json
+b0a1215b91d86b1c0fb0c0b74ff6c66a5d248821 data\demandingsaplings\recipes\sapling_scanner.json
 81ed9793bfeb2b9724e54d1b2a382d976baa2adf data\demandingsaplings\advancements\recipes\tools\thermometer.json
 bf3ca971307f8c8ddf7a857d352f50193a25e9ed data\demandingsaplings\recipes\thermometer.json

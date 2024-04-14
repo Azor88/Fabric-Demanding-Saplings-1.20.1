@@ -96,21 +96,7 @@ public class ThermometerItem extends Item {
         double tempFahrenheit = (tempCelsius*1.8)+32;
 
         if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.SIMPLE.toString())) {
-            if (tempBioma < -0.4f) {
-                return Text.translatable("item.demandingsaplings.thermometer.freezing").getString();
-            }
-            else if (tempBioma < 0.2f) {
-                return Text.translatable("item.demandingsaplings.thermometer.cold").getString();
-            }
-            else if (tempBioma < 0.8f) {
-                return Text.translatable("item.demandingsaplings.thermometer.temper").getString();
-            }
-            else if (tempBioma < 1.4f) {
-                return Text.translatable("item.demandingsaplings.thermometer.hot").getString();
-            }
-            else {
-                return Text.translatable("item.demandingsaplings.thermometer.burning").getString();
-            }
+            return TemperatureHandler.getSimpleOutput(tempBioma);
         }
 
         if (getThermometerModeNBTData(stack).equals(THERMOMETERMODES.PRECISE_BOTH.toString())) {
