@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -50,12 +51,22 @@ public class SaplingScannerItem extends Item {
                     setscannerModeNBTData(stack, SaplingScannerItem.SCANNERMODES.SIMPLE.toString());
                 }
 
-                String minTempString = getInfo(minTemp, player, stack);
-                String maxTempString = getInfo(maxTemp, player, stack);
+                String minTempString;
+                String maxTempString;
 
-                String temperatureString = minTempString + Text.translatable("item.demandingsaplings.sapling_scanner.reading_p3").getString() + maxTempString;
+                if (sapling.getDefaultState().getBlock() == Blocks.CRIMSON_FUNGUS || sapling.getDefaultState().getBlock() == Blocks.WARPED_FUNGUS) {
+                    minTempString = getInfo(2.5f, player, stack);
+                    maxTempString = getInfo(2.5f, player, stack);
+                    String temperatureString = minTempString + Text.translatable("item.demandingsaplings.sapling_scanner.reading_p3").getString() + maxTempString;
+                    outputTemperature(player, sapling, temperatureString);
+                }
+                else {
+                    minTempString = getInfo(minTemp, player, stack);
+                    maxTempString = getInfo(maxTemp, player, stack);
+                    String temperatureString = minTempString + Text.translatable("item.demandingsaplings.sapling_scanner.reading_p3").getString() + maxTempString;
 
-                outputTemperature(player, sapling, temperatureString);
+                    outputTemperature(player, sapling, temperatureString);
+                }
                 player.getItemCooldownManager().set(this, 2);
             }
             else if (sapling.getDefaultState().isIn(ModTags.Blocks.TEMPERATURE_DEPENDANT) && player.isSneaking()) {
@@ -64,8 +75,14 @@ public class SaplingScannerItem extends Item {
                 float tempValue = TemperatureHandler.getTemperature(biomeTemperature, clickPosition);
                 float difference;
                 String chanceString;
+                boolean notFungus;
 
-                if (tempValue < minTemp) {
+                if (sapling.getDefaultState().getBlock() == Blocks.CRIMSON_FUNGUS || sapling.getDefaultState().getBlock() == Blocks.WARPED_FUNGUS) {
+                    notFungus = false;
+                }
+                else notFungus = true;
+
+                if (tempValue < minTemp && notFungus) {
                     difference = Math.abs(tempValue - minTemp);
                     if (difference < 0.25) { //Chance of the sapling to still grow even if the temperature is outside its compatible range
 
@@ -76,9 +93,11 @@ public class SaplingScannerItem extends Item {
                         chanceString = Text.translatable("item.demandingsaplings.sapling_scanner.yes_chance").getString() +
                                 Text.translatable("item.demandingsaplings.sapling_scanner.will_freeze").getString();
                     }
+
+
                     player.sendMessage(Text.literal(chanceString), true);
                 }
-                else if (tempValue > maxTemp) {
+                else if (tempValue > maxTemp && notFungus) {
                     difference = Math.abs(tempValue - maxTemp);
                     if (difference < 0.25) { //Chance of the sapling to still grow even if the temperature is outside its compatible range
 
@@ -88,6 +107,17 @@ public class SaplingScannerItem extends Item {
                     } else {
                         chanceString = Text.translatable("item.demandingsaplings.sapling_scanner.yes_chance").getString() +
                                 Text.translatable("item.demandingsaplings.sapling_scanner.will_burn").getString();
+                    }
+                    player.sendMessage(Text.literal(chanceString), true);
+                }
+                else if (!notFungus) {
+                    if (context.getWorld().getBiomeAccess().getBiome(clickPosition).isIn(BiomeTags.IS_OVERWORLD) || context.getWorld().getBiomeAccess().getBiome(clickPosition).isIn(BiomeTags.IS_END)) {
+                        chanceString = Text.translatable("item.demandingsaplings.sapling_scanner.yes_chance").getString() +
+                                Text.translatable("item.demandingsaplings.sapling_scanner.will_freeze").getString();
+                    }
+                    else {
+                        chanceString = Text.translatable("item.demandingsaplings.sapling_scanner.yes_chance").getString() +
+                                Text.translatable("item.demandingsaplings.sapling_scanner.will_grow").getString();
                     }
                     player.sendMessage(Text.literal(chanceString), true);
                 }
